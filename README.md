@@ -1,8 +1,10 @@
-# Componentization Architecture V2
+# Componentization Architecture v2 - [ReComponents] 
 
-Reactive, lifecycle aware, testable and reusable UI components for Android using Redux.
+A reactive, declarative, lifecycle aware, testable and reusable way of using UI components on Android using Redux.
 
 [Blog Post](https://medium.com/@NetflixTechBlog/making-our-android-studio-apps-reactive-with-ui-components-redux-5e37aac3b244)
+
+> Fragment is not your view
 
 ## Installation
 ~~~gradle
@@ -81,66 +83,6 @@ class YourComponent(
 ## References
 [ReKotlin](https://github.com/ReKotlin/ReKotlin)
 
+[Netflix’s Android Componentization Architecture V1 - Droidcon NYC 2018 Talk](https://youtu.be/dS9gho9Rxn4)
 
-#### /n
-#### /n
-#### /n
-#### /n
-#### /n
-
-# Netflix’s Android Componentization Architecture V1 [DEPRECATED]
-
-Lifecycle aware, testable and reusable UI components for Android.
-
-[Droidcon NYC 2018 Talk](https://youtu.be/dS9gho9Rxn4)
-
-[Droidcon SF 2018 Talk](https://youtu.be/1cWwfh_5ZQs)
-
-## Sample code
-### Fragment / Activity
-
-~~~kotlin
-...
-LoadingComponent(container, EventBusFactory.get(this))
-...
-~~~
-
-### Component (Presenter/Controller/ViewModel)
-
-~~~kotlin
-...
-bus.getSafeManagedObservable(ScreenStateEvent::class.java)
-            .subscribe {
-                when (it) {
-                    ScreenStateEvent.Loading -> {
-                        uiView.show()
-                    }
-                    ScreenStateEvent.Loaded -> {
-                        uiView.hide()
-                    }
-                    ScreenStateEvent.Error -> {
-                        uiView.hide()
-                    }
-                }
-            }
-...   
-~~~
-
-### UIView
-
-~~~kotlin
-class LoadingView(container: ViewGroup) : UIView<UserInteractionEvent>(container) {
-    private val view: View =
-        LayoutInflater.from(container.context).inflate(R.layout.loading, container, true)
-            .findViewById(R.id.loadingSpinner)
-...            
-~~~
-
-## Complete Samples
-[Basic Loading/Error/Success Screen](https://github.com/julianomoraes/componentizationArch/tree/master/app/src/main/java/com/jmoraes/componentizationsample/basic/components)
-
-[Basic Player UI Component](https://github.com/julianomoraes/componentizationArch/tree/master/app/src/main/java/com/jmoraes/componentizationsample/player/components)
-
-## Unit Tests
-[Unit tests for Components](https://github.com/julianomoraes/componentizationArch/tree/master/app/src/test/java/com/jmoraes/componentizationsample)
-
+[Netflix’s Android Componentization Architecture V1 - Droidcon SF 2018 Talk](https://youtu.be/1cWwfh_5ZQs)
