@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
@@ -24,15 +23,15 @@ import com.google.android.exoplayer2.upstream.TransferListener
 import com.google.android.exoplayer2.util.Util
 import com.jmoraes.componentizationsample.basic.components.LoadingComponent
 import com.jmoraes.componentizationsample.basic.eventTypes.ScreenStateEvent
-import com.netflix.componentizationV1.EventBusFactory
 import com.jmoraes.componentizationsample.player.components.PlayerEvents
-import com.netflix.elfo.components.PlayerUserInteractionEvents
 import com.jmoraes.componentizationsample.player.components.PrimaryControlsComponent
+import com.netflix.componentizationV1.EventBusFactory
+import com.netflix.elfo.components.PlayerUserInteractionEvents
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 
-class PlayerActivity : AppCompatActivity(), LifecycleOwner {
+class PlayerActivity : AppCompatActivity() {
     private var player: SimpleExoPlayer? = null
     private val playerView: PlayerView by lazy { findViewById<PlayerView>(R.id.player_view) }
     private lateinit var primaryControlsComponent: PrimaryControlsComponent
@@ -170,9 +169,5 @@ class PlayerActivity : AppCompatActivity(), LifecycleOwner {
                 }
             }
         }
-    }
-
-    override fun getLifecycle(): Lifecycle {
-        return lifecycleRegistry
     }
 }

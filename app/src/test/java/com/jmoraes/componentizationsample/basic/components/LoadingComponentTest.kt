@@ -1,9 +1,9 @@
 package com.jmoraes.componentizationsample.basic.components
 
-import android.arch.lifecycle.LifecycleOwner
 import android.view.ViewGroup
-import com.jmoraes.componentizationsample.basic.eventTypes.ScreenStateEvent
+import androidx.lifecycle.LifecycleOwner
 import com.jmoraes.componentizationsample.basic.components.uiViews.LoadingView
+import com.jmoraes.componentizationsample.basic.eventTypes.ScreenStateEvent
 import com.netflix.componentizationV1.EventBusFactory
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
